@@ -28,11 +28,6 @@ O sistema permite:
 * ✅ Interface simples e funcional
 
 
-## 🔗 Demo
-
-👉 https://teu-usuario.github.io/localstorage-project/
-
----
 
 ## 🧠 O que aprendi
 
