@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>session storage</title>
+</head>
+<body>
+
+
+    <h1>Sobre session storage</h1>
+
+    <input id="searchField" type="text" placeholder="Pesquise o usuario...">
+    <button id="btn">Pesquisar</button>
+
+
+    <script>
+
+        const searchField = document.getElementById("searchField");
+        
+        const searchBtn = document.getElementById("btn");
+
+
+
+        btn.addEventListener("click", () =>{
+            const searchTerm = searchField.value;
+
+            console.log(searchTerm)
+
+            sessionStorage.setItem("Usuario pesquisado", searchTerm);
+
+            localStorage.setItem("dados_localStorage", searchTerm);
+
+           searchField.value = "";
+
+
+
+        })
+
+
+
+
+    </script>
+    
+</body>
+</html>

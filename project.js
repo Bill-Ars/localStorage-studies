@@ -1,42 +1,43 @@
-const name_form = document.getElementById("name-form");
-const welcomeContainer = document.getElementById("welcome");
-const logoutbtn = document.getElementById("logout");
+const form = document.getElementById("name-form");
+const welcome = document.getElementById("welcome");
 const usernameSpan = document.getElementById("username");
+const logoutBtn = document.getElementById("logout");
+const submeter = document.getElementById("submeter");
 
-// SUBMIT DO FORM
-name_form.addEventListener("submit", (e) => {
+
+
+// Verifica se já existe um utilizador guardado
+const savedName = localStorage.getItem("username");
+
+        if (savedName) {
+            showWelcome(savedName);
+        } else {
+            showForm();
+        }
+
+
+
+    submeter.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const nameInput = document.getElementById("nome");
-
-    localStorage.setItem("name", nameInput.value);
-
-    nameInput.value = "";
-
-    checkName();
+    const nameInput = document.getElementById("nome").value;
+    localStorage.setItem("username", nameInput);
+    showWelcome(nameInput);
 });
 
-// VERIFICA SE HÁ NOME GUARDADO
-function checkName() {
-    const userName = localStorage.getItem("name");
+logoutBtn.addEventListener("click", function () {
+    localStorage.removeItem("username");
+    showForm();
+});
 
-    if (userName) {
-        name_form.style.display = "none";
-        welcomeContainer.style.display = "block";
 
-        // MOSTRAR O NOME
-        usernameSpan.textContent = userName;
-    } else {
-        name_form.style.display = "block";
-        welcomeContainer.style.display = "none";
-    }
+function showWelcome(name) {
+    usernameSpan.textContent = name;
+    form.style.display = "none";
+    welcome.style.display = "block";
 }
 
-// LOGOUT
-logoutbtn.addEventListener("click", () => {
-    localStorage.removeItem("name");
-    checkName();
-});
-
-// EXECUTA AO CARREGAR A PÁGINA
-checkName();
+function showForm() {
+    form.style.display = "block";
+    welcome.style.display = "none";
+}
